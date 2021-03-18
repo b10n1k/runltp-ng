@@ -532,7 +532,7 @@ sub ssh_start
 	$sshcmd .= ($key ? "-i $key " : " ");
 	$sshcmd .= $self->{'ssh_opts'} . ' ';
 	$sshcmd .= "$user\@$host";
-	$sshcmd =~ s/'/\\'/g;
+	$sshcmd =~ s/'/'"'"'/g;
 	my $cmdline = "export TERM=dumb; script -f -c '$sshcmd' /dev/null";
 
 	msg("Starting ssh: $cmdline\n");
